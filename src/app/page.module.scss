@@ -1,0 +1,17 @@
+.Page{
+    h1{
+        font-size: 36px;
+    }
+    p{
+        font-size: 12px;
+        opacity: 0.5;
+        display: flex;
+        justify-items: center;
+        gap: 5px;
+    }
+    &__content{
+        margin-top: 30px;
+        display: flex;
+        gap: 40px;
+    }
+}

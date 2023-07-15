@@ -1,0 +1,10 @@
+.Card{
+    width: 100%;
+    min-height: 162px;
+    padding: 16px;
+    background-color: rgba(var(--primary-rgb), 0.01);
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(var(--primary-rgb), 0.05);
+    }
+}

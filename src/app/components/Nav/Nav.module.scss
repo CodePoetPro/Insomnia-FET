@@ -1,0 +1,29 @@
+.Nav {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  padding: 0 66px;
+  background-color: rgba(var(--primary-rgb), 0.01);
+  gap: 96px;
+  ul {
+    height: inherit;
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    li {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: inherit;
+      width: 136px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease-in-out;
+      font-size: 20px;
+      font-weight: 600;
+      &:hover {
+        border-color: var(--foreground-color);
+      }
+    }
+  }
+}
