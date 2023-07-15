@@ -45,10 +45,15 @@ export default function Home() {
     <section className={styles.Page}>
       <h1>Bitcoin Price</h1>
       {state.data?.disclaimer && (
+        <>
+        <p>Last updated : {state.data.time.updated}</p>
         <p>
           <Image src="info.svg" alt="Info Icon" width="15" height="15" />
           {state.data.disclaimer}
+          <br />
         </p>
+        </>
+
       )}
 
       <div className={styles.Page__content}>

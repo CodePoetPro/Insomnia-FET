@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './Nav.module.scss'
 
@@ -7,8 +8,7 @@ export default function Nav() {
         <nav className={styles.Nav}>
             <Image src="/luna.svg" alt="Luna Exchange" width={50} height={50} />
             <ul>
-                <li><a href="/">BTC</a></li>
-                <li><a href="/about">NFT</a></li>
+                <li><Link href="/">BTC</Link></li>
             </ul>
         </nav>
         )
