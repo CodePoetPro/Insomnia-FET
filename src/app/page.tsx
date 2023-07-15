@@ -1,12 +1,13 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 import PriceCard from "./components/PriceCard/PriceCard";
+import Card from "./components/Card";
 import { getBTCPrice } from "./api";
 import styles from "./page.module.scss";
-import { BPIData, CurrencyType } from "./types";
+import { BPIData } from "./types";
 
 interface HomeState {
   data: BPIData | null;
@@ -18,10 +19,8 @@ export default function Home() {
   const [state, setState] = useState<HomeState>({
     data: null,
     refreshInterval: 50000,
-    loading: false,
+    loading: true,
   });
-
- 
 
   const handleStateChange = (newState: Partial<HomeState>) => {
     setState((prevState) => ({
@@ -44,27 +43,30 @@ export default function Home() {
   return (
     <section className={styles.Page}>
       <h1>Bitcoin Price</h1>
+     
       {state.data?.disclaimer && (
         <>
-        <p>Last updated : {state.data.time.updated}</p>
-        <p>
-          <Image src="info.svg" alt="Info Icon" width="15" height="15" />
-          {state.data.disclaimer}
-          <br />
-        </p>
+          <p>Last updated : {state.data.time.updated}</p>
+          <p>
+            <Image src="info.svg" alt="Info Icon" width="15" height="15" />
+            {state.data.disclaimer}
+            <br />
+          </p>
         </>
-
       )}
-
+      {state.loading && (
+        <div className={styles.Page__content}>
+         { Array(3).fill(0).map((_, i) => <Card key={i}></Card>)}
+        </div>
+      )}
       <div className={styles.Page__content}>
-       {state.data?.bpi?.USD && (
-        <PriceCard
-          icon={`${state.data!.bpi!.USD.code.toLowerCase()}.svg`}
-          currency={state.data!.bpi!.USD}
-          price={state.data!.bpi!.USD.rate}
-        />
-       )}
-        
+        {state.data?.bpi?.USD && (
+          <PriceCard
+            icon={`${state.data!.bpi!.USD.code.toLowerCase()}.svg`}
+            currency={state.data!.bpi!.USD}
+            price={state.data!.bpi!.USD.rate}
+          />
+        )}
 
         {state.data?.bpi?.GBP && (
           <PriceCard
@@ -81,7 +83,6 @@ export default function Home() {
             price={state.data!.bpi!.EUR.rate}
           />
         )}
-        
       </div>
     </section>
   );
